@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sito Panetti</title>
+
+    <style>
+        body {
+            background-color: #f0f8ff; 
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;   
+            text-align: center;
+            margin: 0px;
+        }
+
+        h1 {
+            color: #003366; 
+            
+            
+        }
+
+        h3 {
+            color: #00509e; 
+            margin: 1rem;
+        }
+
+        .inserimento {
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+        }
+
+        p{
+            margin-right: 1rem;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        #nome{
+            padding: 0.5rem;
+            border: 2px solid #00509e;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        #pulsante{
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            background-color: #00509e;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            
+        }
+
+        #greetings1, #greetings2 {
+            color: #00509e;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        #greetings1{
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 600px) {  /* sempre responsivity*/
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1rem;
+            }
+
+            .inserimento {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            #nome, #pulsante{
+                font-size: 0.9rem;
+            }
+        }
+
+
+
+        #logo{
+            width: 100vw;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #panetti{
+            width: 10rem;
+            height: 10rem;
+        }
+
+        .social{
+            width: 3rem;
+            height: 3rem;
+            margin: 0.5rem;
+        }
+
+        #loghi{
+            display: flex;
+            
+        }
+
+        
+
+
+    </style>
+</head>
+<body>
+    <div id="logo">
+        <img id="panetti" src="images/images-1-removebg-preview.png" alt="logo panetti" >
+        
+        <div id="loghi">
+            <a href="https://www.instagram.com/"><img class="social" src="images/icons8-instagram-50.png" alt="instagra"></a>
+            <a href="https://workspace.google.com/intl/it/gmail/"><img class="social" src="images/icons8-posta-50.png" alt="mail"></a>
+            <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F%3Flocale%3Dit_IT"><img class="social" src="images/icons8-facebook-50.png" alt="facebook"></a>
+            
+        </div>
+
+    </div>
+    <h1>Benvenuto nella pagina di accesso dell'Istituto</h1>
+    <h3 id="titolo2">ITT Statale "Panetti-Pitagora" - BARI</h3>
+    
+    <div class="inserimento">
+        <p>Inserisci tuo nome</p>
+        <form>
+            <input id="nome" type="text">
+            <input id="pulsante" type="button" value="invia">
+        </form>
+    </div>
+
+    <h2 id="greetings1"></h2>
+    <h2 id="greetings2"></h2>
+
+    <script>
+        let nome = document.querySelector("#nome")
+        let invio = document.querySelector("#greetings1")
+        let invio1 = document.querySelector("#greetings2")
+        let pulsante = document.querySelector("#pulsante")
+
+        function update() {
+            if (nome.value != "" && isNaN(nome.value)) {
+                invio.innerHTML = "Benvenuto nella pagina web del Panetti - Pitagora"
+                invio1.innerHTML = nome.value
+                pulsante.removeEventListener("click", update)
+                console.log("ok") //debug
+
+                setTimeout(redirect, 3000)
+            }
+        }
+
+        function redirect() {
+            window.location.href = "redirect.html"
+        }
+
+        pulsante.addEventListener("click", update)
+    </script>
+</body>
+</html>
